@@ -11,16 +11,31 @@ public class Endereco {
 	private String numero;
 	private String bairro;
 	private String cep;
-	private Integer cliente;
+	private Cliente cliente;
 	
-	
-	
-	public Endereco(Integer id,String logradouro, String numero, String bairro, String cep) {
-		this.id = id;
+
+	public void setLogradouro(String logradouro) {
 		this.logradouro = logradouro;
+	}
+
+
+	public void setNumero(String numero) {
 		this.numero = numero;
+	}
+
+
+	public void setBairro(String bairro) {
 		this.bairro = bairro;
+	}
+
+
+	public void setCep(String cep) {
 		this.cep = cep;
+	}
+
+
+	public void setCliente(Cliente cliente) {
+		this.cliente = cliente;
 	}
 
 
@@ -53,7 +68,7 @@ public class Endereco {
 		return cep;
 	}
 	
-	public Integer getCliente() {
+	public Cliente getCliente() {
 		return cliente;
 	}
 

@@ -1,3 +1,4 @@
+<%@page import="entidade.Contato"%>
 <%@page import="dao.ClienteDao"%>
 <%@page import="entidade.Cliente"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
@@ -13,12 +14,26 @@
 
 String snome = request.getParameter("nome");
 String scpf = request.getParameter("cpf");
-String sdataNascimento = request.getParameter("dataNacimento");
+String sdataNascimento = request.getParameter("datanascimento");
+
+String sddd = request.getParameter("DDD");
+String stelefone = request.getParameter("telefone");
+
+
 
 Cliente cli = new Cliente(snome,scpf,sdataNascimento);
 
 ClienteDao clien = new ClienteDao();
 clien.cadastrar(cli);
+
+
+Contato cont = new Contato();
+
+cont.setDDD(Integer.parseInt(sddd));
+cont.setTelefone(stelefone);
+
+
+
 
 %>
 

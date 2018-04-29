@@ -11,7 +11,7 @@ public class Cliente {
 	private Integer id;
 	private String nome;
 	private String cpf;
-	private String dataNacimento;
+	private String dataNascimento;
 	private List<Endereco> enderecos = new ArrayList<>();
 	private List<Contato> contatos = new ArrayList<>();
 	
@@ -20,7 +20,7 @@ public class Cliente {
 		super();
 		this.nome = nome;
 		this.cpf = cpf;
-		this.dataNacimento = dataNas ;
+		this.dataNascimento = dataNas ;
 	}
 
 	public Integer getId() {
@@ -44,8 +44,8 @@ public class Cliente {
         contatos.add(cont);
 	}
 
-	public String getDataNacimento() {
-		return dataNacimento;
+	public String getDataNascimento() {
+		return dataNascimento;
 	}
 
 	

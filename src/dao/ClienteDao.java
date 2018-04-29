@@ -22,7 +22,7 @@ public class ClienteDao {
 			PreparedStatement preparar = con.prepareStatement(sql);
 			preparar.setString(1, cliente.getNome());
 			preparar.setString(2, cliente.getCpf());
-			preparar.setString(3, cliente.getDataNacimento());
+			preparar.setString(3, cliente.getDataNascimento());
 			preparar.execute();
 			preparar.close();
 			System.out.println("cadastrado com sucesso!");

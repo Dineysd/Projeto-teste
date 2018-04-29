@@ -18,8 +18,7 @@ public class ConexaoDao {
 			if (connection == null) {
 				Class.forName("org.postgresql.Driver");
 				connection = DriverManager.getConnection(banco, user, password);
-				connection.setAutoCommit(false);
-				connection.setTransactionIsolation(Connection.TRANSACTION_READ_COMMITTED);
+				
 				System.out.println("conectado com sucesso!");
 			}
 		} catch (Exception e) {

@@ -7,23 +7,28 @@ import java.util.UUID;
 public class Contato {
 	
 	private Integer id;
-	private int ddd;
+	private Integer ddd;
 	private String telefone;
-	private Integer codigo_cli;
+	private Cliente codigo_cli;
 
-	
-	
-	public Contato(Integer id,int ddd, String numero, Integer codigoCli) {
-		
+
+	public void setId(Integer id) {
 		this.id = id;
-		this.ddd = ddd;
-		this.telefone = numero;
-		codigo_cli = codigoCli;
-		
 	}
 
 
-	public int getDDD() {
+	public void setDDD(Integer ddd) {
+		this.ddd = ddd;
+	}
+
+
+	public void setTelefone(String telefone) {
+		this.telefone = telefone;
+	}
+
+
+
+	public Integer getDDD() {
 		return ddd;
 	}
 
@@ -37,7 +42,7 @@ public class Contato {
 		return id;
 	}
 	
-	public Integer getCodigo_cli() {
+	public Cliente getCodigo_cli() {
 		return codigo_cli;
 	}
 
