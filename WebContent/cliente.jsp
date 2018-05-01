@@ -82,6 +82,8 @@
 			</table>
 
 		</form>
+		
+		<a href="index.jsp">Voltar</a>
 
 	</div>
 </body>

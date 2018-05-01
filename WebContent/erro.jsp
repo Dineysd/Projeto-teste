@@ -8,5 +8,9 @@
 </head>
 <body>
 
+Verifique o erro: ${mensagem}
+
+<a href="index.jsp">Voltar</a>
+
 </body>
 </html>

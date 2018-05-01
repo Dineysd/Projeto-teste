@@ -17,8 +17,8 @@ public class ClienteDao {
 	public void excluir(Cliente cliente) {
 		try {
 
-			PreparedStatement pstm = conexao.prepareStatement("Delete from	cliente where id = ? ");
-			pstm.setLong(1, cliente.getId());
+			PreparedStatement pstm = conexao.prepareStatement("Delete from	cliente where nome = ? ");
+			pstm.setString(1, cliente.getNome());
 			pstm.execute();
 			pstm.close();
 			conexao.close();
@@ -53,7 +53,6 @@ public class ClienteDao {
 
 			pstm.setString(1, cliente.getNome());
 			pstm.setString(2, cliente.getCpf());
-
 			pstm.setDate(3, new java.sql.Date(cliente.getDataNascimento().getTime()));
 
 			pstm.execute();
@@ -65,14 +64,14 @@ public class ClienteDao {
 	}
 
 	public List<Cliente> listar() {
+		Cliente cli = null;
 		List<Cliente> lista = new ArrayList<>();
 		try {
 
 			Statement stm = conexao.createStatement();
-			ResultSet rs = stm.executeQuery("Select * from cliente");
+			ResultSet rs = stm.executeQuery("select * from cliente");
 			while (rs.next()) {
 				
-				Cliente cli = new Cliente();
 				cli.setNome(rs.getString("nome"));
 				cli.setCpf(rs.getString("cpf"));
 				cli.setDataNascimento(new java.util.Date(rs.getDate("datanascimento").getTime()));
@@ -80,7 +79,7 @@ public class ClienteDao {
 				lista.add(cli);
 			}
 			stm.close();
-			conexao.close();
+			
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -89,8 +88,8 @@ public class ClienteDao {
 
 	public Cliente consultar(Cliente cliente) {
 		try {
-			PreparedStatement pstm = conexao.prepareStatement("Select * from cliente where DDD =	?");
-			pstm.setInt(1, cliente.getId());
+			PreparedStatement pstm = conexao.prepareStatement("select * from cliente where nome =	?");
+			pstm.setString(1, cliente.getNome());
 			ResultSet rs = pstm.executeQuery();
 			if (rs.next()) {
 
@@ -113,8 +112,8 @@ public class ClienteDao {
 		List<Cliente> lista = new ArrayList<>();
 		try {
 			PreparedStatement pstm = conexao
-					.prepareStatement("select e.id,e.nome,e.cpf,c.telefone from cliente e inner join contato c"
-							+ "on e.id = id.codigo_cli  where DDD = ?");
+					.prepareStatement("select e.nome, e.cpf, e.datanascimento from cliente e inner join contato c"
+							+ "on e.id = id.codigo_cli  where c.DDD = ?");
 
 			pstm.setInt(1, contato.getDDD());
 			ResultSet rs = pstm.executeQuery();

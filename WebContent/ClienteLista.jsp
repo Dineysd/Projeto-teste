@@ -16,27 +16,25 @@
 		<P>Lista de Clientes</P>
 		<table border="1">
 			<tr>
-				<td>id</td>
+				
 				<td>Nome</td>
 				<td>CPF</td>
 				<td>Data Nascimento</td>
-				<td>Comandos</td>
+				
 			</tr>
 			<c:forEach var="cliente" items="${listaCliente}">
 				<tr>
-					<td>${cliente.id}</td>
-					<td>${cliente.nome}</td>
-					<td>${cliente.cpf}</td>
-					<td><fmt:formatDate value="${cliente.datanascimento}" type="both" pattern="dd/MM/yyyy"/>  
-					<td><a href="AlunoServlet?acao=Excluir&id=${cliente.id}">Excluir</a></td>
+					
+					<td><c:out value= "${cliente.nome}"/></td>
+					<td><c:out value="${cliente.cpf}" /></td>
+					<td><fmt:formatDate value="${cliente.datanascimento}" type="both" pattern="dd/MM/yyyy"/></td>
+					
 				</tr>
 			</c:forEach>
 		</table>
-		<c:if test="${fn:length(listaCliente) > 0}">
-   		Existem ${fn:length(listaCliente)} Clientes!
- 		</c:if><br> 		
+				
 	</div>
-	<a href="menu.jsp">Voltar</a>
+	<a href="index.jsp">Voltar</a>
 
 </body>
 </html>

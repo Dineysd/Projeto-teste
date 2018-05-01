@@ -69,24 +69,17 @@ public class ClienteServlet extends HttpServlet {
 				
 				emp.setCnpj(request.getParameter("cnpj"));
 				emp.setNome(request.getParameter("nome"));
-
- 
-				//Faz a leitura da data de cadastro. Caso ocorra um erro de formatação
-				// o sistema utilizará a data atual
-				try {
+				
 					DateFormat df2 = new SimpleDateFormat("dd/MM/yyyy");					
 					cli.setDataNascimento(df2.parse(request.getParameter("datanascimento")));
-				} catch (Exception e) {
-					System.out.println("erro na data de nascimento "+ e);;	
-				}
+				
  
 			}
  
 			if (acao.equalsIgnoreCase("Incluir")) {
-				// Verifica se a matrícula informada já existe no Banco de Dados
-				// Se existir enviar uma mensagem senão faz a inclusão
+				
 				if (dao.existe(cli)) {
-					mensagem = "id informada já existe!";
+					mensagem = "cliente informado já existe!";
 					
 				} else {
 					dao.inserir(cli);
@@ -109,8 +102,7 @@ public class ClienteServlet extends HttpServlet {
 			e.printStackTrace();
 		}
  
-		// Se a mensagem estiver vazia significa que houve sucesso!
-		// Senão será exibida a tela de erro do sistema.
+		
 		if (mensagem.length() == 0) {
 			mensagem = "Cliente Cadastrado com sucesso!";
 		} else {
@@ -123,9 +115,6 @@ public class ClienteServlet extends HttpServlet {
 		request.setAttribute("mensagem", mensagem);
  
  
-		//O sistema é direcionado para a página 
-		//sucesso.jsp Se tudo ocorreu bem
-		//erro.jsp se houver algum problema.
 		RequestDispatcher rd = request.getRequestDispatcher(destino);
 		rd.forward(request, response);
 	}
