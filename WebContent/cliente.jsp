@@ -22,16 +22,16 @@
 				
 				<tr>
 					<td>Nome:</td>
-					<td><input name="nome" autofocus="autofocus" placeholder="Nome"  value="${cliente.nome}"></td>
+					<td><input type="text" name="nome" autofocus="autofocus" placeholder="Nome"  value="${cliente.nome}"></td>
 				</tr>
 				<tr>
 					<td>CPF:</td>
-					<td><input name="cpf" autofocus="autofocus" placeholder="cpf"  value="${cliente.cpf}"></td>
+					<td><input type="text" name="cpf" autofocus="autofocus" placeholder="cpf"  value="${cliente.cpf}"></td>
 				</tr>
 
 				<tr>
 					<td>Data nascimento:</td>
-					<td><input  type="date" size="12" name="datanascimento" value="${cliente.datanascimento}"
+					<td><input  type="date"  name="datanascimento" value="${cliente.datanascimento}"
 					placeholder="10/10/2014"></td>
 				</tr>
 
@@ -48,8 +48,13 @@
 				</tr>
 
 				<tr>
-					<td>numero:</td>
+					<td>Numero:</td>
 					<td><input type="text" name="numero" value="${endereco.numero}" placeholder="numero"></td>
+				</tr>
+				
+				<tr>
+					<td>Bairro:</td>
+					<td><input type="text" name="bairro" value="${endereco.bairro}" placeholder="numero"></td>
 				</tr>
 
 				<tr>

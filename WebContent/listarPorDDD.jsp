@@ -17,14 +17,14 @@
 
 	<div align="center" style="float: left; width: 32%;" id="teste1">
 
-		<form method="post" action="">
+		<form method="post" action="ClientePorDDD">
 
 			<h1>Lista de Clientes por DDD!</h1>
 			<table>
 				<tr>
 					<td>Informe o DDD da sua cidade:</td>
 					<td><input type="text" name="DDD" size="3"
-						placeholder="DDD" value="${contato.DDD}"></td>
+						placeholder="DDD" "></td>
 				</tr>
 
 				<tr>
@@ -36,17 +36,6 @@
 
 	</div>
 	
-	<%
-	
-	Integer n = Integer.parseInt(request.getParameter("DDD"));
-	
-	
-	ClienteDao c = new ClienteDao();
-	
-	c.consultarPorDDD(n);
-	
-	
-	%>
 	
 
 	<div align="center">

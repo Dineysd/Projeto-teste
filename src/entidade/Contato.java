@@ -1,13 +1,10 @@
 package entidade;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.UUID;
 
 public class Contato {
 	
 	private Integer id;
-	private Integer ddd;
+	private Long ddd;
 	private String telefone;
 	private Cliente codigo_cli;
 
@@ -17,7 +14,7 @@ public class Contato {
 	}
 
 
-	public void setDDD(Integer ddd) {
+	public void setDDD(Long ddd) {
 		this.ddd = ddd;
 	}
 
@@ -28,7 +25,7 @@ public class Contato {
 
 
 
-	public Integer getDDD() {
+	public Long getDDD() {
 		return ddd;
 	}
 

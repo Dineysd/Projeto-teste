@@ -5,7 +5,7 @@ public class Empresa {
 	private Integer id;
 	private String nome;
 	private String cnpj;
-	private int clienteCodigo;
+	private Cliente clienteCodigo;
 
 	public void setNome(String nome) {
 		this.nome = nome;
@@ -15,7 +15,7 @@ public class Empresa {
 		this.cnpj = cnpj;
 	}
 
-	public void setClienteCodigo(int clienteCodigo) {
+	public void setClienteCodigo(Cliente clienteCodigo) {
 		this.clienteCodigo = clienteCodigo;
 	}
 
@@ -31,7 +31,7 @@ public class Empresa {
 		return nome;
 	}
 
-	public int getClienteCodigo() {
+	public Cliente getClienteCodigo() {
 		return clienteCodigo;
 	}
 

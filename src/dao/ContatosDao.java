@@ -11,14 +11,15 @@ import entidade.Contato;
 public class ContatosDao {
 	
 	Connection con = ConexaoDao.getConnection();
+	private UtimoIdCliente cliente;
 
-	public void cadastrar(Contato contato) throws SQLException {
-		String sql = "insert into endereco(DDD, telefone, codigo_cliente) values(?, ?, ?)";
+	public void inserir(Contato contato) throws SQLException {
+		String sql = "insert into endereco(DDD, telefone, codigo_cli) values(?, ?, ?)";
 		try {
 			PreparedStatement preparar = con.prepareStatement(sql);
-			preparar.setInt(1, contato.getDDD());
+			preparar.setLong(1, contato.getDDD());
 			preparar.setString(2, contato.getTelefone());
-			preparar.setInt(3, contato.getCodigo_cli().getId());
+			preparar.setInt(3, cliente.utimoidCliente());
 			
 			preparar.execute();
 			preparar.close();

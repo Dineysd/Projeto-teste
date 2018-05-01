@@ -1,6 +1,7 @@
 package dao;
 
 import java.sql.Connection;
+import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.Statement;
@@ -21,7 +22,7 @@ public class ClienteDao {
 			pstm.setString(1, cliente.getNome());
 			pstm.execute();
 			pstm.close();
-			conexao.close();
+			
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -31,14 +32,14 @@ public class ClienteDao {
 		boolean achou = false;
 		try {
 
-			PreparedStatement pstm = conexao.prepareStatement("Select * from cliente where nome =	?");
+			PreparedStatement pstm = conexao.prepareStatement("Select nome from cliente where nome =	?");
 			pstm.setString(1, cliente.getNome());
 			ResultSet rs = pstm.executeQuery();
 			if (rs.next()) {
 				achou = true;
 			}
 			pstm.close();
-			conexao.close();
+			
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -49,22 +50,22 @@ public class ClienteDao {
 		try {
 
 			PreparedStatement pstm = conexao
-					.prepareStatement("Insert into	cliente (nome, cpf, datanascimento) values (?,?,?)");
+					.prepareStatement("Insert into	cliente (nome, cpf, datanascimento) values (?, ?, ?)");
 
 			pstm.setString(1, cliente.getNome());
 			pstm.setString(2, cliente.getCpf());
-			pstm.setDate(3, new java.sql.Date(cliente.getDataNascimento().getTime()));
+			pstm.setDate(3, (Date) (cliente.getDataNascimento()));
 
 			pstm.execute();
 			pstm.close();
-			conexao.close();
+			
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
 	}
 
 	public List<Cliente> listar() {
-		
+
 		List<Cliente> lista = new ArrayList<>();
 		try {
 
@@ -74,35 +75,29 @@ public class ClienteDao {
 				Cliente cli = new Cliente();
 				cli.setNome(rs.getString("nome"));
 				cli.setCpf(rs.getString("cpf"));
-				cli.setDataNascimento(new java.sql.Date(rs.getDate("datanascimento").getTime()));
-				
+				cli.setDataNascimento(new java.util.Date(rs.getDate("datanascimento").getTime()));
+
 				lista.add(cli);
 			}
 			stm.close();
-			
+
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
 		return lista;
 	}
 
-	
+	public List<Cliente> consultarPorDDD(Contato contato) {
 
-	public List<Cliente> consultarPorDDD(Integer ddd) {
-
-		Contato cont = new Contato();
-		cont.setDDD(ddd);
-		
 		List<Cliente> lista = new ArrayList<>();
 		try {
-			PreparedStatement pstm = conexao
-					.prepareStatement("select * from cliente e inner join contato c"
-							+ "on e.id = id.codigo_cli  where c.DDD = ?");
+			PreparedStatement pstm = conexao.prepareStatement(
+					"SELECT * FROM cliente c inner join contato e on  c.id = e.codigo_cli where DDD = ?");
 
-			pstm.setInt(1, cont.getDDD());
+			pstm.setLong(1, contato.getDDD());
 			ResultSet rs = pstm.executeQuery();
 			while (rs.next()) {
-				
+
 				Cliente recuperarDoBanco = new Cliente();
 
 				recuperarDoBanco.setNome(rs.getString("nome"));
@@ -112,7 +107,7 @@ public class ClienteDao {
 				lista.add(recuperarDoBanco);
 			}
 			pstm.close();
-			
+
 		} catch (Exception e) {
 			e.printStackTrace();
 		}

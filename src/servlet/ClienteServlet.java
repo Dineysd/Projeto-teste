@@ -2,7 +2,9 @@ package servlet;
 
 import java.io.IOException;
 import java.sql.Date;
+import java.sql.SQLException;
 import java.text.DateFormat;
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.List;
@@ -13,6 +15,8 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+
+import com.sun.org.apache.bcel.internal.classfile.Attribute;
 
 import dao.ClienteDao;
 import dao.ContatosDao;
@@ -39,73 +43,86 @@ public class ClienteServlet extends HttpServlet {
 		String destino = "sucesso.jsp";
 		String mensagem = "";
 		List<Cliente> lista = new ArrayList<>();
-		List<Cliente> lista2 = new ArrayList<>();
+		
  
  
 		Cliente cli = new Cliente();
 		Contato cont = new Contato();
-		Empresa emp = new Empresa();
+		Empresa emp =new Empresa();
 		Endereco ende = new Endereco();
 		
+		
+		ContatosDao daoCont = new ContatosDao();
+		EmpresaDao daoemp = new EmpresaDao();
+		EnderecoDao daoEnde = new EnderecoDao();
+		
+		
 		ClienteDao dao = new ClienteDao();
-		ContatosDao dao2 = new ContatosDao();
-		EmpresaDao dao3 = new EmpresaDao();
-		EnderecoDao dao4 = new EnderecoDao();
  
-		try {
+		
  
 			//Se a ação for DIFERENTE de Listar são lidos os dados da tela
 			if (!acao.equalsIgnoreCase("Listar")) {
 				
 				cli.setNome(request.getParameter("nome"));
 				cli.setCpf(request.getParameter("cpf"));
-				
-				cont.setDDD(Integer.parseInt(request.getParameter("DDD")));
-				cont.setTelefone(request.getParameter("telefone"));
-				
-				ende.setLogradouro(request.getParameter("logradouro"));
-				ende.setBairro(request.getParameter("bairro"));
-				ende.setCep(request.getParameter("cep"));
-				ende.setNumero(request.getParameter("numero"));
-				
-				emp.setCnpj(request.getParameter("cnpj"));
-				emp.setNome(request.getParameter("nome"));
-				
-					DateFormat df2 = new SimpleDateFormat("dd/MM/yyyy");					
-					cli.setDataNascimento(df2.parse(request.getParameter("datanascimento")));
-				
- 
-			}
- 
-			if (acao.equalsIgnoreCase("Incluir")) {
-				
-				if (dao.existe(cli)) {
-					mensagem = "cliente informado já existe!";
+
+						DateFormat df2 = new SimpleDateFormat("dd/MM/yyyy");
+						Date data;
+						try {
+							data = new Date(df2.parse(request.getParameter("datanascimento")).getTime());
+							cli.setDataNascimento(data);
+						} catch (ParseException e) {
+							e.printStackTrace();
+						}
 					
-				} else {
 					dao.inserir(cli);
-					dao2.cadastrar(cont);
-					dao3.cadastrar(emp);
-					dao4.cadastrar(ende);
-				}
-			} else  if (acao.equalsIgnoreCase("Excluir")) {
-				dao.excluir(cli);
+					try {
+						cont.setDDD(Long.parseLong(request.getParameter("DDD")));
+						cont.setTelefone(request.getParameter("telefone"));
+						
+						daoCont.inserir(cont);
+					} catch (SQLException e) {
+						e.printStackTrace();
+					}
+					try {
+						emp.setNome(request.getParameter("nome"));
+						emp.setCnpj(request.getParameter("cnpj"));
+						
+						daoemp.inserir(emp);
+					} catch (SQLException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}
+					try {
+						ende.setCep(request.getParameter("cep"));
+						ende.setLogradouro(request.getParameter("logradouro"));
+						ende.setBairro(request.getParameter("bairro"));
+						ende.setNumero(request.getParameter("numero"));
+						
+						daoEnde.cadastrar(ende);
+					} catch (SQLException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}
+					
+					
+					request.setAttribute("cliente", cli);
+					request.setAttribute("contato", cont);
+					request.setAttribute("empresa", emp);
+					request.setAttribute("endereco", ende);
+			
 				destino = "cliente.jsp";
 			} 
-		} catch (Exception e) {
-			mensagem += e.getMessage();
-			destino = "erro.jsp";
-			e.printStackTrace();
-		}
- 
+		
+			
 		
 		if (mensagem.length() == 0) {
 			mensagem = "Cliente Cadastrado com sucesso!";
 		} else {
+			
 			destino = "erro.jsp";
 		}
-		
-		cont.setDDD(Integer.parseInt(request.getParameter("DDD")));
  
 		// Lista todos os registros existente no Banco de Dados
 		lista = dao.listar();
@@ -117,5 +134,7 @@ public class ClienteServlet extends HttpServlet {
 		RequestDispatcher rd = request.getRequestDispatcher(destino);
 		rd.forward(request, response);
 	}
-
+		
+	
+	
 }

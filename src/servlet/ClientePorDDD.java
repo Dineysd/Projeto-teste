@@ -10,6 +10,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import dao.ClienteDao;
+import entidade.Contato;
 
 @WebServlet("/ClientePorDDD")
 public class ClientePorDDD extends HttpServlet {
@@ -24,14 +25,16 @@ public class ClientePorDDD extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 
-		Integer n = Integer.parseInt(request.getParameter("DDD"));
+		
+		Contato cont = new Contato();
+		cont.setDDD(Long.parseLong(request.getParameter("DDD")));
 
 		ClienteDao c = new ClienteDao();
 
 		try {
 
 			RequestDispatcher rd = request.getRequestDispatcher("/listarPorDDD.jsp");
-			request.setAttribute("listaPorDDD", c.consultarPorDDD(n));
+			request.setAttribute("listaPorDDD", c.consultarPorDDD(cont));
 			rd.forward(request, response);
 		} catch (Exception e) {
 			e.getMessage();
