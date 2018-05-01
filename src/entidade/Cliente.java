@@ -11,16 +11,23 @@ public class Cliente {
 	private Integer id;
 	private String nome;
 	private String cpf;
-	private String dataNascimento;
+	private Date dataNascimento;
 	private List<Endereco> enderecos = new ArrayList<>();
 	private List<Contato> contatos = new ArrayList<>();
 	
 
-	public Cliente(String nome, String cpf, String dataNas)  {
-		super();
+	
+
+	public void setNome(String nome) {
 		this.nome = nome;
+	}
+
+	public void setCpf(String cpf) {
 		this.cpf = cpf;
-		this.dataNascimento = dataNas ;
+	}
+
+	public void setDataNascimento(Date dataNascimento) {
+		this.dataNascimento = dataNascimento;
 	}
 
 	public Integer getId() {
@@ -44,7 +51,7 @@ public class Cliente {
         contatos.add(cont);
 	}
 
-	public String getDataNascimento() {
+	public Date getDataNascimento() {
 		return dataNascimento;
 	}
 

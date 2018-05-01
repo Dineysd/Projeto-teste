@@ -7,74 +7,14 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <link href="resources/css/css.css" rel="stylesheet" />
-<title>Insert title here</title>
+<title>Sistema de cadastro</title>
 </head>
 <body>
 
-	<h1>Cadastro de Clientes!</h1>
-
-	
-		<div style="float: left; width: 32%;" id="teste1">
-
-			<form method="post" action="CadastroSalvo.jsp" >
-				<table title="Cadastro">
-					
-					<tr>
-						<td>Nome:</td>
-						<td><input type="text" name="nome"></td>
-					</tr>
-					<tr>
-						<td>CPF:</td>
-						<td><input type="text"  name="cpf"></td>
-					</tr>
-
-					<tr>
-						<td>Data nascimento:</td>
-						<td><input type="text" 
-							name="datanascimento">
-						</td>
-					</tr>
-					
-					<tr>
-						<td>Telefone:</td>
-						<td><input type="text" id="numero" name="numero" size="3" placeholder="DDD">  
-							<input size="12"type="text" name="numero"></td>
-					</tr>
-
-					<tr>
-						<td>Logradouro:</td>
-						<td><input type="text" name="logradouro"></td>
-					</tr>
-					
-					<tr>
-						<td>numero:</td>
-						<td> <input type="text" name="numero"></td>
-					</tr>
-					
-					<tr>
-						<td>CEP:</td>
-						<td><input type="text" name="cep"></td>
-					</tr>
-					
-					<tr>
-						<td>CNPJ:</td>
-						<td><input type="text"  name="cnpj"></td>
-					</tr>
-					
-					<tr>
-						<td>Nome Empresa:</td>
-						<td><input type="text"  name="nome"></td>
-					</tr>
-					
-					<tr>
-						<td />
-						<td><input type="submit" value="Salvar"  /> 
-						</td>
-					</tr>
-				</table>
-
-			</form>
-
-		</div>
+	<div align="center">
+		<H1> Sistema de cadastro!</H1>
+		<a href="cliente.jsp">Manter Cliente</a><br> <a
+			href="ClienteServlet?acao=Listar">Listar Alunos</a><br>
+	</div>
 </body>
 </html>
