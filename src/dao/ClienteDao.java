@@ -64,17 +64,17 @@ public class ClienteDao {
 	}
 
 	public List<Cliente> listar() {
-		Cliente cli = null;
+		
 		List<Cliente> lista = new ArrayList<>();
 		try {
 
 			Statement stm = conexao.createStatement();
 			ResultSet rs = stm.executeQuery("select * from cliente");
 			while (rs.next()) {
-				
+				Cliente cli = new Cliente();
 				cli.setNome(rs.getString("nome"));
 				cli.setCpf(rs.getString("cpf"));
-				cli.setDataNascimento(new java.util.Date(rs.getDate("datanascimento").getTime()));
+				cli.setDataNascimento(new java.sql.Date(rs.getDate("datanascimento").getTime()));
 				
 				lista.add(cli);
 			}
@@ -86,47 +86,33 @@ public class ClienteDao {
 		return lista;
 	}
 
-	public Cliente consultar(Cliente cliente) {
-		try {
-			PreparedStatement pstm = conexao.prepareStatement("select * from cliente where nome =	?");
-			pstm.setString(1, cliente.getNome());
-			ResultSet rs = pstm.executeQuery();
-			if (rs.next()) {
+	
 
-				cliente.setNome(rs.getString("nome"));
-				cliente.setCpf(rs.getString("cpf"));
+	public List<Cliente> consultarPorDDD(Integer ddd) {
 
-				cliente.setDataNascimento(new java.util.Date(rs.getDate("datanascimento").getTime()));
-			}
-			pstm.close();
-			conexao.close();
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-		return cliente;
-	}
-
-	public List<Cliente> consultarPorDDD(Contato contato) {
-
-		Cliente recuperarDoBanco = null;
+		Contato cont = new Contato();
+		cont.setDDD(ddd);
+		
 		List<Cliente> lista = new ArrayList<>();
 		try {
 			PreparedStatement pstm = conexao
-					.prepareStatement("select e.nome, e.cpf, e.datanascimento from cliente e inner join contato c"
+					.prepareStatement("select * from cliente e inner join contato c"
 							+ "on e.id = id.codigo_cli  where c.DDD = ?");
 
-			pstm.setInt(1, contato.getDDD());
+			pstm.setInt(1, cont.getDDD());
 			ResultSet rs = pstm.executeQuery();
 			while (rs.next()) {
+				
+				Cliente recuperarDoBanco = new Cliente();
 
 				recuperarDoBanco.setNome(rs.getString("nome"));
 				recuperarDoBanco.setCpf(rs.getString("cpf"));
-				recuperarDoBanco.setDataNascimento(new java.util.Date(rs.getDate("datanascimento").getTime()));
+				recuperarDoBanco.setDataNascimento(new java.sql.Date(rs.getDate("datanascimento").getTime()));
 
 				lista.add(recuperarDoBanco);
 			}
 			pstm.close();
-			conexao.close();
+			
 		} catch (Exception e) {
 			e.printStackTrace();
 		}

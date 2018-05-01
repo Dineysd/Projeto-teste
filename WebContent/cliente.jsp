@@ -71,7 +71,7 @@
 					<td><select name="acao" required>
 							<option selected value="Incluir">Incluir</option>
 							<option value="Excluir">Excluir</option>
-							<option value="Consultar">Consultar</option></td>
+							
 					</select>
 				</tr>
 				<tr>

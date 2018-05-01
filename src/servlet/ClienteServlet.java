@@ -39,6 +39,7 @@ public class ClienteServlet extends HttpServlet {
 		String destino = "sucesso.jsp";
 		String mensagem = "";
 		List<Cliente> lista = new ArrayList<>();
+		List<Cliente> lista2 = new ArrayList<>();
  
  
 		Cliente cli = new Cliente();
@@ -89,13 +90,8 @@ public class ClienteServlet extends HttpServlet {
 				}
 			} else  if (acao.equalsIgnoreCase("Excluir")) {
 				dao.excluir(cli);
-			} else if (acao.equalsIgnoreCase("Consultar")) {
-				request.setAttribute("cliente", cli);
-				
-				cli = dao.consultar(cli);
-				
 				destino = "cliente.jsp";
-			}
+			} 
 		} catch (Exception e) {
 			mensagem += e.getMessage();
 			destino = "erro.jsp";
@@ -108,9 +104,12 @@ public class ClienteServlet extends HttpServlet {
 		} else {
 			destino = "erro.jsp";
 		}
+		
+		cont.setDDD(Integer.parseInt(request.getParameter("DDD")));
  
 		// Lista todos os registros existente no Banco de Dados
 		lista = dao.listar();
+		
 		request.setAttribute("listaCliente", lista);
 		request.setAttribute("mensagem", mensagem);
  
