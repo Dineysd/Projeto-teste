@@ -32,7 +32,7 @@ public class ClienteDao {
 		boolean achou = false;
 		try {
 
-			PreparedStatement pstm = conexao.prepareStatement("Select nome from cliente where nome =	?");
+			PreparedStatement pstm = conexao.prepareStatement("Select nome from cliente where nome = ?");
 			pstm.setString(1, cliente.getNome());
 			ResultSet rs = pstm.executeQuery();
 			if (rs.next()) {
@@ -54,7 +54,7 @@ public class ClienteDao {
 
 			pstm.setString(1, cliente.getNome());
 			pstm.setString(2, cliente.getCpf());
-			pstm.setDate(3, (Date) (cliente.getDataNascimento()));
+			pstm.setDate(3, new java.sql.Date(cliente.getDataNascimento().getTime()));
 
 			pstm.execute();
 			pstm.close();

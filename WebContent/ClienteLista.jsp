@@ -27,7 +27,7 @@
 					
 					<td><c:out value= "${cliente.nome}"/></td>
 					<td><c:out value="${cliente.cpf}" /></td>
-				<% 	//<td><fmt:formatDate value="${cliente.datanascimento}" type="both" pattern="dd/MM/yyyy HH:mm:ss"/></td>%>
+				<fmt:formatDate value="${cliente.datanascimento}" type="both" pattern="dd/MM/yyyy HH:mm:ss"/></td>
 					
 				</tr>
 			</c:forEach>

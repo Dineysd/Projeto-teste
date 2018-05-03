@@ -13,10 +13,13 @@ public class UtimoIdCliente {
 		
 		Integer idCliente = null;
 		PreparedStatement stmt = con
-				.prepareStatement("select max(idContrato) as maximo from cliente");
+				.prepareStatement("select max(id) as maximo from cliente");
 		ResultSet rs = stmt.executeQuery();
 		if (rs.next()) {
+			if(rs.getInt("maximo") > 0)
 			idCliente = rs.getInt("maximo");
+			else
+				System.out.println("a tabela não possui valor");
 		}
 		stmt.close();
 		return idCliente;

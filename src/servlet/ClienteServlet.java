@@ -47,15 +47,6 @@ public class ClienteServlet extends HttpServlet {
  
  
 		Cliente cli = new Cliente();
-		Contato cont = new Contato();
-		Empresa emp =new Empresa();
-		Endereco ende = new Endereco();
-		
-		
-		ContatosDao daoCont = new ContatosDao();
-		EmpresaDao daoemp = new EmpresaDao();
-		EnderecoDao daoEnde = new EnderecoDao();
-		
 		
 		ClienteDao dao = new ClienteDao();
  
@@ -67,50 +58,20 @@ public class ClienteServlet extends HttpServlet {
 				cli.setNome(request.getParameter("nome"));
 				cli.setCpf(request.getParameter("cpf"));
 
-						DateFormat df2 = new SimpleDateFormat("dd/MM/yyyy");
-						Date data;
+						
+						
 						try {
-							data = new Date(df2.parse(request.getParameter("datanascimento")).getTime());
-							cli.setDataNascimento(data);
+							DateFormat df2 = new SimpleDateFormat("dd/MM/yyyy");
+							cli.setDataNascimento(df2.parse(request.getParameter("datanascimento")));
+							
 						} catch (ParseException e) {
 							e.printStackTrace();
 						}
 					
 					dao.inserir(cli);
-					try {
-						cont.setDDD(Long.parseLong(request.getParameter("DDD")));
-						cont.setTelefone(request.getParameter("telefone"));
-						
-						daoCont.inserir(cont);
-					} catch (SQLException e) {
-						e.printStackTrace();
-					}
-					try {
-						emp.setNome(request.getParameter("nome"));
-						emp.setCnpj(request.getParameter("cnpj"));
-						
-						daoemp.inserir(emp);
-					} catch (SQLException e) {
-						// TODO Auto-generated catch block
-						e.printStackTrace();
-					}
-					try {
-						ende.setCep(request.getParameter("cep"));
-						ende.setLogradouro(request.getParameter("logradouro"));
-						ende.setBairro(request.getParameter("bairro"));
-						ende.setNumero(request.getParameter("numero"));
-						
-						daoEnde.cadastrar(ende);
-					} catch (SQLException e) {
-						// TODO Auto-generated catch block
-						e.printStackTrace();
-					}
-					
 					
 					request.setAttribute("cliente", cli);
-					request.setAttribute("contato", cont);
-					request.setAttribute("empresa", emp);
-					request.setAttribute("endereco", ende);
+					
 			
 				destino = "cliente.jsp";
 			} 

@@ -31,13 +31,13 @@
 
 				<tr>
 					<td>Data nascimento:</td>
-					<td><input  type="date"  name="datanascimento" value="${cliente.datanascimento}"
+					<td><input  type="text"  name="datanascimento" 
 					placeholder="10/10/2014"></td>
 				</tr>
 
 				<tr>
-					<td>Telefone:</td>
-					<td><input type="text" id="numero" name="numero" size="3"
+					<td>Telefone (DDD):</td>
+					<td><input type="text"  name="DDD" size="3"
 						placeholder="DDD"> <input size="12" type="tel" name="telefone"
 						 placeholder="9999-9999" value="${contato.telefone}"></td>
 				</tr>
