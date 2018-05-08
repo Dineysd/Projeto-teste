@@ -24,7 +24,7 @@
 				<tr>
 					<td>Informe o DDD da sua cidade:</td>
 					<td><input type="text" name="DDD" size="3"
-						placeholder="DDD" "></td>
+						placeholder="DDD" value="${contato.DDD}"></td>
 				</tr>
 
 				<tr>

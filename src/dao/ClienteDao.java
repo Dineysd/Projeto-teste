@@ -102,7 +102,7 @@ public class ClienteDao {
 
 				recuperarDoBanco.setNome(rs.getString("nome"));
 				recuperarDoBanco.setCpf(rs.getString("cpf"));
-				recuperarDoBanco.setDataNascimento(new java.sql.Date(rs.getDate("datanascimento").getTime()));
+				recuperarDoBanco.setDataNascimento(new java.util.Date(rs.getDate("datanascimento").getTime()));
 
 				lista.add(recuperarDoBanco);
 			}

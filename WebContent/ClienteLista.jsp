@@ -25,9 +25,11 @@
 			<c:forEach var="cliente" items="${listaCliente}">
 				<tr>
 					
-					<td><c:out value= "${cliente.nome}"/></td>
-					<td><c:out value="${cliente.cpf}" /></td>
-				<fmt:formatDate value="${cliente.datanascimento}" type="both" pattern="dd/MM/yyyy HH:mm:ss"/></td>
+					<td>${cliente.nome}</td>
+					<td>${cliente.cpf}</td>
+					
+					
+				<td>${cliente.datanascimento}</td>
 					
 				</tr>
 			</c:forEach>
