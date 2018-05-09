@@ -31,31 +31,12 @@
 
 				<tr>
 					<td>Data nascimento:</td>
-					<td><input  type="text"  name="datanascimento" 
+					<td><input  type="text"  name="datanascimento" autofocus="autofocus" 
 					placeholder="10/10/2014"></td>
 				</tr>
 
 
-				<tr>
-					<td>Logradouro:</td>
-					<td><input type="text" name="logradouro" value="${endereco.logradouro}" placeholder="Logradouro"></td>
-				</tr>
-
-				<tr>
-					<td>Numero:</td>
-					<td><input type="text" name="numero" value="${endereco.numero}" placeholder="numero"></td>
-				</tr>
 				
-				<tr>
-					<td>Bairro:</td>
-					<td><input type="text" name="bairro" value="${endereco.bairro}" placeholder="numero"></td>
-				</tr>
-
-				<tr>
-					<td>CEP:</td>
-					<td><input type="text" name="cep"  value="${endereco.cep}" placeholder="CEP"></td>
-				</tr>
-
 				<tr>
 					<td>CNPJ:</td>
 					<td><input type="text" name="cnpj" value="${empresa.cnpj}" placeholder="CNPJ"></td>

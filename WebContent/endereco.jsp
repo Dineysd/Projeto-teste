@@ -10,7 +10,7 @@
 
 <div align="center" style="float: left; width: 32%;" id="teste1">
 
-		<form method="post" action="ClienteServlet">
+		<form method="post" action="enderecoServlet">
 			<table title="Cadastro">
 				<h1>Cadastro de Endereço!</h1>
 				
@@ -18,25 +18,24 @@
 
 				<tr>
 					<td>Logradouro:</td>
-					<td><input type="text" name="logradouro" value="${endereco.logradouro}" placeholder="Logradouro"></td>
+					<td><input type="text" name="logradouro" autofocus="autofocus" value="${endereco.logradouro}" placeholder="Logradouro"></td>
 				</tr>
 
 				<tr>
 					<td>Numero:</td>
-					<td><input type="text" name="numero" value="${endereco.numero}" placeholder="numero"></td>
+					<td><input type="text" name="numero" autofocus="autofocus" value="${endereco.numero}" placeholder="numero"></td>
 				</tr>
 				
 				<tr>
 					<td>Bairro:</td>
-					<td><input type="text" name="bairro" value="${endereco.bairro}" placeholder="numero"></td>
+					<td><input type="text" name="bairro" autofocus="autofocus" value="${endereco.bairro}" placeholder="numero"></td>
 				</tr>
 
 				<tr>
 					<td>CEP:</td>
-					<td><input type="text" name="cep"  value="${endereco.cep}" placeholder="CEP"></td>
+					<td><input type="text" name="cep" autofocus="autofocus"  value="${endereco.cep}" placeholder="CEP"></td>
 				</tr>
 
-				
 				
 				<tr>
 					<td><input type="submit" value="Enviar"> <input
@@ -48,7 +47,7 @@
 		</form>
 		
 		<a href="index.jsp">Voltar</a>
-		<a href="endereco.jsp">novo Contato</a>
+		
 
 	</div>
 

@@ -4,7 +4,7 @@ package entidade;
 public class Contato {
 	
 	private Integer id;
-	private Long ddd;
+	private Integer ddd;
 	private String telefone;
 	private Cliente codigo_cli;
 
@@ -14,7 +14,7 @@ public class Contato {
 	}
 
 
-	public void setDDD(Long ddd) {
+	public void setDDD(Integer ddd) {
 		this.ddd = ddd;
 	}
 
@@ -25,7 +25,7 @@ public class Contato {
 
 
 
-	public Long getDDD() {
+	public Integer getDDD() {
 		return ddd;
 	}
 

@@ -7,7 +7,7 @@ import java.util.List;
 
 public class Cliente {
 	
-	private Integer id;
+	private Long id;
 	private String nome;
 	private String cpf;
 	private Date dataNascimento;
@@ -28,8 +28,12 @@ public class Cliente {
 	public void setDataNascimento(Date dataNascimento) {
 		this.dataNascimento = dataNascimento;
 	}
+	
+	public void setId(Long id) {
+		this.id = id;
+	}
 
-	public Integer getId() {
+	public Long getId() {
 		return id;
 	}
 

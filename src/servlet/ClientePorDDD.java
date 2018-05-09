@@ -27,7 +27,7 @@ public class ClientePorDDD extends HttpServlet {
 
 		
 		Contato cont = new Contato();
-		cont.setDDD(Long.parseLong(request.getParameter("DDD")));
+		cont.setDDD(Integer.parseInt(request.getParameter("DDD")));
 
 		ClienteDao c = new ClienteDao();
 

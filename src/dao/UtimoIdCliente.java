@@ -5,24 +5,25 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 
 import connection.ConexaoDao;
+import entidade.Cliente;
 
 public class UtimoIdCliente {
+	Cliente idCliente = new Cliente();
 	
-	public Integer utimoidCliente() throws Exception {
+	public Cliente utimoidCliente() throws Exception {
 		Connection con = ConexaoDao.getConnection();
 		
-		Integer idCliente = null;
 		PreparedStatement stmt = con
-				.prepareStatement("select max(id) as maximo from cliente");
+				.prepareStatement("select max(id) from cliente");
 		ResultSet rs = stmt.executeQuery();
 		if (rs.next()) {
-			if(rs.getInt("maximo") > 0)
-			idCliente = rs.getInt("maximo");
-			else
-				System.out.println("a tabela não possui valor");
+			
+			idCliente.setId(Long.parseLong(rs.getString("id")));
+
 		}
 		stmt.close();
 		return idCliente;
+		
 	}
 
 }

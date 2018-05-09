@@ -20,7 +20,7 @@ public class EmpresaDao {
 		
 			preparar.setString(1, empresa.getCnpj());
 			preparar.setString(2, empresa.getNome());
-			preparar.setInt(3, cliente.utimoidCliente());
+			preparar.setLong(3, cliente.utimoidCliente().getId());
 			
 			preparar.execute();
 			preparar.close();
