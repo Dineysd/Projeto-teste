@@ -15,17 +15,14 @@ import entidade.Contato;
 
 @WebServlet("/contatoServlet")
 public class ContatoServlet extends HttpServlet {
-
 	private static final long serialVersionUID = 1L;
 
-	protected void doGet(HttpServletRequest request, HttpServletResponse response)
-			throws ServletException, IOException {
+	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		doPost(request, response);
 	}
 
-	protected void doPost(HttpServletRequest request, HttpServletResponse response)
-			throws ServletException, IOException {
-
+	
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		Contato cont = new Contato();
 
 		ContatosDao cdao = new ContatosDao();
@@ -33,12 +30,13 @@ public class ContatoServlet extends HttpServlet {
 		cont.setDDD(Integer.parseInt(request.getParameter("ddd")));
 		cont.setTelefone(request.getParameter("telefone"));
 
-		try {
-
-			cdao.inserir(cont);
-		} catch (SQLException e) {
-			e.printStackTrace();
-		}
+			try {
+				cdao.inserir(cont);
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		
 		
 		request.setAttribute("contato", cont);
 

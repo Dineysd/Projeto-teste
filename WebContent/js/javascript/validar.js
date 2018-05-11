@@ -81,6 +81,27 @@ function validarForm() {
 			mensagem += "O CPF deve ser valido \n ";
 		}
 	}
+	
+	if (!validarPreenchimento("datanascimento")) {
+		mensagem += "preencha o campo da Data de Nascimento \n ";
+	} 
+	
+	
+	if (!validarPreenchimento("nomemp")) {
+		mensagem += "o campo empresa deve ser prenchido";
+			
+	} else {
+		if (!validarValorMin("nomemp", 10)) {
+			mensagem += "O valor do nome deve ter no minimo 10 caracteres \n ";
+		}else if(!validarValorMax("nomemp",50)){
+			mensagem += "O valor do nome deve ter no maximo 50 caracteres \n ";
+		}
+		
+	}
+	
+	if (!validarPreenchimento("cnpj")) {
+		mensagem += "Preencha o campo do CNPJ  \n ";
+	} 
 
 	// se a mensagem for diferente de vazio mostrar alerta senão enviar o
 	// formulário
@@ -96,3 +117,5 @@ window.onload = function() {
 		validarForm();
 	}
 }
+
+

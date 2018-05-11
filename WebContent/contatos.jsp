@@ -4,28 +4,30 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<script type="text/javascript" src="js/javascript/validarcontato.js"></script>
+
 <title>Insert title here</title>
 </head>
 <body>
 
-	<div align="center" style="float: left; width: 32%;" id="teste1">
+	<div align="center" style="float: left; width: 32%;" >
 
-		<form method="post" action="contatoServlet">
+		<form method="post" action="contatoServlet" name="form2" id="form2" >
 			<table title="Cadastro">
 				<h1>Cadastro de Contatos!</h1>
 
 
 				<tr>
 					<td>Telefone (DDD):</td>
-					<td><input type="text" name="ddd" autofocus="autofocus"
+					<td><input type="text" name="ddd" id="ddd" autofocus="autofocus"
 						size="3" placeholder="DDD" value="${contato.ddd}"> <input
-						size="12" type="text" name="telefone" autofocus="autofocus"
+						size="12" type="text" name="telefone" id="telefone" autofocus="autofocus"
 						placeholder="9999-9999" value="${contato.telefone}"></td>
 				</tr>
 
 
 				<tr>
-					<td><input type="submit" value="Enviar"> <input
+					<td><input type="submit" value="Enviar" name="enviar2" id="enviar2"> <input
 						type="reset" value="Limpar"></td>
 				</tr>
 
