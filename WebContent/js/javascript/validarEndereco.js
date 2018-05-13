@@ -11,30 +11,38 @@ function validarPreenchimento(id) {
 	}
 }
 
-function validarForm2() {
-
+function validarForm3() {
+	
+	
 	var mensagem = "";
+	var contErro = 0;
 
 	if (!validarPreenchimento("logradouro")) {
 		mensagem += "Preencha o campo do Logradouro  \n ";
+		contErro++;
 	}
 
 	if (!validarPreenchimento("numero")) {
 		mensagem += "Preencha o campo do numero  \n ";
+		contErro++;
 	}
 	
 	if (!validarPreenchimento("bairro")) {
 		mensagem += "Preencha o campo do Bairro  \n ";
+		contErro++;
 	}
 
 	if (!validarPreenchimento("cep")) {
 		mensagem += "Preencha o campo do Cep  \n ";
+		contErro++;
 	}
 
 	// se a mensagem for diferente de vazio mostrar alerta senão enviar o
 	// formulário
-	if (mensagem != "") {
+	if (mensagem != "" && contErro > 0) {
 		window.alert(mensagem);
+		return erro;
+		
 	} else {
 		$("form3").submit();
 	}
@@ -42,6 +50,6 @@ function validarForm2() {
 
 window.onload = function() {
 	$("enviar3").onclick = function() {
-		validarForm2();
+		validarForm3();
 	}
 }

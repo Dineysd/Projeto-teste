@@ -14,19 +14,24 @@ function validarPreenchimento(id) {
 function validarForm2() {
 
 	var mensagem = "";
+	var contErro = 0;
 
 	if (!validarPreenchimento("ddd")) {
 		mensagem += "Preencha o campo do DDD  \n ";
+		contErro++;
 	}
 
 	if (!validarPreenchimento("telefone")) {
 		mensagem += "Preencha o campo do telefone  \n ";
+		contErro++;
 	}
 
 	// se a mensagem for diferente de vazio mostrar alerta senão enviar o
 	// formulário
-	if (mensagem != "") {
+	if (mensagem != "" && contErro > 0) {
 		window.alert(mensagem);
+	
+		return false; 
 	} else {
 		$("form2").submit();
 	}

@@ -22,7 +22,7 @@
 
 	<div align="center" style="float: left; width: 32%;">
 
-		<form method="post" action="ClienteServlet" name="form" id="form">
+		<form method="post" action="ClienteServlet" name="form" id="form" onsubmit="validarForm(this); return false;">
 			<table title="Cadastro">
 				<h1>Cadastro de Clientes!</h1>
 
@@ -43,7 +43,7 @@
 				<tr>
 					<td>Data nascimento:</td>
 					<td><input type="text" name="datanascimento"
-						id="datanascimento" autofocus="autofocus" placeholder="10/10/2014"></td>
+						id="datanascimento" autofocus="autofocus" placeholder="10/10/2014" onblur="fctValidaData(this); return false;"></td>
 						
 				</tr>
 

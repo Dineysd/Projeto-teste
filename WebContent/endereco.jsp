@@ -12,7 +12,7 @@
 
 <div align="center" style="float: left; width: 32%;" id="teste1">
 
-		<form method="post" action="enderecoServlet" name="form3" id="form3">
+		<form method="post" action="enderecoServlet" name="form3" id="form3" onsubmit="validarForm3(this); return false;">
 			<table title="Cadastro">
 				<h1>Cadastro de Endereço!</h1>
 				
