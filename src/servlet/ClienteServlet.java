@@ -42,8 +42,10 @@ public class ClienteServlet extends HttpServlet {
 		cli.setCpf(request.getParameter("cpf"));
 
 		try {
-			DateFormat df2 = new SimpleDateFormat("dd/MM/yyyy");
-			cli.setDataNascimento(df2.parse(request.getParameter("datanascimento")));
+			DateFormat df = new SimpleDateFormat("dd/MM/yyyy");
+			DateFormat df3 = new SimpleDateFormat("dd/MM/yyyy");
+			cli.setDataNascimento(df.parse(request.getParameter("datanascimento")));
+			cli.setDataEmpresa(df3.parse(request.getParameter("dataemp")));
 
 		} catch (ParseException e) {
 			e.printStackTrace();

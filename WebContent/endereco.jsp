@@ -25,7 +25,7 @@
 
 				<tr>
 					<td>Numero:</td>
-					<td><input type="text" name="numero" id="numero" autofocus="autofocus" value="${endereco.numero}" placeholder="numero"></td>
+					<td><input type="text" name="numero" id="numero" autofocus="auto focus" value="${endereco.numero}" placeholder="numero"></td>
 				</tr>
 				
 				<tr>

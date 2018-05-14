@@ -22,7 +22,8 @@
 
 	<div align="center" style="float: left; width: 32%;">
 
-		<form method="post" action="ClienteServlet" name="form" id="form" onsubmit="validarForm(this); return false;">
+		<form method="post" action="ClienteServlet" name="form" id="form"
+			onsubmit="validarForm(this); return false;">
 			<table title="Cadastro">
 				<h1>Cadastro de Clientes!</h1>
 
@@ -31,32 +32,27 @@
 					<td>Nome:</td>
 					<td><input type="text" name="nome" id="nome"
 						autofocus="autofocus" placeholder="Nome" value="${cliente.nome}"></td>
-					
+
 				</tr>
 				<tr>
-					<td>CPF:</td>
+					<td>CPF/CNPJ:</td>
 					<td><input type="text" name="cpf" id="cpf"
 						autofocus="autofocus" placeholder="cpf" value="${cliente.cpf}"></td>
-						
+
 				</tr>
 
 				<tr>
 					<td>Data nascimento:</td>
 					<td><input type="text" name="datanascimento"
-						id="datanascimento" autofocus="autofocus" placeholder="10/10/2014" onblur="fctValidaData(this); return false;"></td>
-						
+						id="datanascimento" autofocus="autofocus" placeholder="00/00/0000"></td>
+
 				</tr>
 
-				<tr>
-					<td>CNPJ:</td>
-					<td><input type="text" name="cnpj" id="cnpj"
-						value="${empresa.cnpj}" placeholder="CNPJ"></td>
-				</tr>
 
 				<tr>
-					<td>Nome Empresa:</td>
-					<td><input type="text" name="nomemp" id="nomemp"
-						value="${empresa.nome}" placeholder="Nome Empresa"></td>
+					<td>Data Empresa:</td>
+					<td><input type="text" name="dataemp" id="dataemp"
+						autofocus="autofocus" placeholder="00/00/0000"></td>
 				</tr>
 
 				<tr>
@@ -68,7 +64,7 @@
 
 		</form>
 
-		<a href="index.jsp">Voltar</a> 
+		<a href="index.jsp">Voltar</a>
 	</div>
 </body>
 </html>

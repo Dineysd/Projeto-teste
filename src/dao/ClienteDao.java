@@ -15,50 +15,20 @@ import entidade.Contato;
 public class ClienteDao {
 	Connection conexao = ConexaoDao.getConnection();
 
-	public void excluir(Cliente cliente) {
-		try {
-
-			PreparedStatement pstm = conexao.prepareStatement("Delete from	cliente where nome = ? ");
-			pstm.setString(1, cliente.getNome());
-			pstm.execute();
-			pstm.close();
-			
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-	}
-
-	public boolean existe(Cliente cliente) {
-		boolean achou = false;
-		try {
-
-			PreparedStatement pstm = conexao.prepareStatement("Select nome from cliente where nome = ?");
-			pstm.setString(1, cliente.getNome());
-			ResultSet rs = pstm.executeQuery();
-			if (rs.next()) {
-				achou = true;
-			}
-			pstm.close();
-			
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-		return achou;
-	}
-
 	public void inserir(Cliente cliente) {
 		try {
 
 			PreparedStatement pstm = conexao
-					.prepareStatement("Insert into	cliente (nome, cpf, datanascimento) values (?, ?, ?)");
+					.prepareStatement("Insert into	cliente (nome, cpf, datanascimento, dataemp) values (?, ?, ?, ?)");
 
 			pstm.setString(1, cliente.getNome());
 			pstm.setString(2, cliente.getCpf());
 			pstm.setDate(3, new java.sql.Date(cliente.getDataNascimento().getTime()));
+			pstm.setDate(4, new java.sql.Date(cliente.getDataEmpresa().getTime()));
 
 			pstm.execute();
 			pstm.close();
-			
+
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -103,7 +73,8 @@ public class ClienteDao {
 				recuperarDoBanco.setNome(rs.getString("nome"));
 				recuperarDoBanco.setCpf(rs.getString("cpf"));
 				recuperarDoBanco.setDataNascimento(new java.util.Date(rs.getDate("datanascimento").getTime()));
-
+				//recuperarDoBanco.setDataEmpresa(new java.util.Date(rs.getDate("dataemp").getTime()));
+				System.out.println();
 				lista.add(recuperarDoBanco);
 			}
 			pstm.close();
