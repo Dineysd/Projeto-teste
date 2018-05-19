@@ -15,8 +15,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import dao.ClienteDao;
-
+import dao.ContatosDao;
 import entidade.Cliente;
+import entidade.Contato;
 
 @WebServlet("/ClienteServlet")
 public class ClienteServlet extends HttpServlet {
@@ -37,9 +38,17 @@ public class ClienteServlet extends HttpServlet {
 		Cliente cli = new Cliente();
 
 		ClienteDao dao = new ClienteDao();
+		
+		Contato cont = new Contato();
+		
+		cont.setDDD(Integer.parseInt(request.getParameter("ddd")));
+		cont.setTelefone(request.getParameter("telefone"));
+		
+		
 
 		cli.setNome(request.getParameter("nome"));
 		cli.setCpf(request.getParameter("cpf"));
+		cli.addContato(cont);
 
 		try {
 			DateFormat df = new SimpleDateFormat("dd/MM/yyyy");

@@ -46,6 +46,13 @@ public class Cliente {
 	public String getCpf() {
 		return cpf;
 	}
+	
+	public List<Contato> getContatos() {
+		return contatos;
+	}
+	public List<Endereco> getEnderecos() {
+		return enderecos;
+	}
 
 	public void addEnderco(Endereco end) {
 		enderecos.add(end);

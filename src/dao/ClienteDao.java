@@ -18,8 +18,9 @@ public class ClienteDao {
 	public void inserir(Cliente cliente) {
 		try {
 
+			String sql ="Insert into cliente (nome, cpf, datanascimento, dataemp) values (?, ?, ?, ?)";
 			PreparedStatement pstm = conexao
-					.prepareStatement("Insert into	cliente (nome, cpf, datanascimento, dataemp) values (?, ?, ?, ?)");
+					.prepareStatement(sql);
 
 			pstm.setString(1, cliente.getNome());
 			pstm.setString(2, cliente.getCpf());
@@ -27,7 +28,19 @@ public class ClienteDao {
 			pstm.setDate(4, new java.sql.Date(cliente.getDataEmpresa().getTime()));
 
 			pstm.execute();
-			pstm.close();
+
+			for (Contato contatos : cliente.getContatos()) {
+				sql = "insert into contato (ddd, telefone, cliente_id) values(?, ?, ?);";
+				
+				PreparedStatement cli_contato = conexao.prepareStatement(sql);
+
+				cli_contato.setInt(1, contatos.getDDD());
+				cli_contato.setString(2, contatos.getTelefone());
+				cli_contato.setLong(3, cliente.getId());
+
+				cli_contato.execute();
+				pstm.close();
+			}
 
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -73,7 +86,8 @@ public class ClienteDao {
 				recuperarDoBanco.setNome(rs.getString("nome"));
 				recuperarDoBanco.setCpf(rs.getString("cpf"));
 				recuperarDoBanco.setDataNascimento(new java.util.Date(rs.getDate("datanascimento").getTime()));
-				//recuperarDoBanco.setDataEmpresa(new java.util.Date(rs.getDate("dataemp").getTime()));
+				// recuperarDoBanco.setDataEmpresa(new
+				// java.util.Date(rs.getDate("dataemp").getTime()));
 				System.out.println();
 				lista.add(recuperarDoBanco);
 			}
