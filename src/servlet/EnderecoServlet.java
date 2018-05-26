@@ -25,18 +25,16 @@ public class EnderecoServlet extends HttpServlet {
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		Endereco end = new Endereco();
+		
 		EnderecoDao dao = new EnderecoDao();
 		
-		end.setLogradouro(request.getParameter("logradouro"));
-		end.setNumero(request.getParameter("numero"));
-		end.setBairro(request.getParameter("bairro"));
-		end.setCep(request.getParameter("cep"));
+		Endereco end = new Endereco(request.getParameter("logradouro"), Integer.parseInt(request.getParameter("numero")), 
+				request.getParameter("bairro"), request.getParameter("cidade"), request.getParameter("cep"));
+
 		
 		try {
 			dao.cadastrar(end);
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		

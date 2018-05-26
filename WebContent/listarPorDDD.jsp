@@ -1,3 +1,5 @@
+<%@page import="org.apache.jasper.tagplugins.jstl.core.ForEach"%>
+<%@page import="java.util.List"%>
 <%@page import="entidade.Contato"%>
 <%@page import="dao.ClienteDao"%>
 <%@page import="entidade.Cliente"%>
@@ -23,8 +25,8 @@
 			<table>
 				<tr>
 					<td>Informe o DDD da sua cidade:</td>
-					<td><input type="text" name="DDD" size="3"
-						placeholder="DDD" value="${contato.DDD}"></td>
+					<td><input type="text" name="ddd" id="ddd" autofocus="autofocus" placeholder="DDD"  size="3" 
+						value="${ddd}"></td>
 				</tr>
 
 				<tr>
@@ -35,33 +37,46 @@
 		</form>
 
 	</div>
-	
-	
 
-	<div align="center">
-		<P>Lista de Clientes</P>
-		<table border="1">
+	<fieldset>
+		<legend>
+			<strong>Lista de Clientes</strong>
+		</legend>
+		<table align="center" border="1" width="80%">
 			<tr>
 
 				<td>Nome</td>
 				<td>CPF</td>
 				<td>Data Nascimento</td>
+				<td>Data Empresa</td>
 
 			</tr>
-			<c:forEach var="cliente" items="${listaPorDDD}">
-				<tr>
+			<%
+			try{
+			    List<Cliente> listas = (List<Cliente>) request.getAttribute("listas");
+				java.text.DateFormat df = new java.text.SimpleDateFormat("dd/MM/yyyy");
+			
+			
+			
+				for(Cliente cli : listas){
+			%>
+			<tr>
 
-					<td><c:out value="${cliente.nome}" /></td>
-					<td><c:out value="${cliente.cpf}" /></td>
-					<%
-						//<td><fmt:formatDate value="${cliente.datanascimento}" type="both" pattern="dd/MM/yyyy HH:mm:ss"/></td>
-					%>
+				<td><%=cli.getNome()%></td>
+				<td><%=cli.getCpf()%></td>
+				<td><%=df.format(cli.getDataNascimento())%></td>
+				<td><%=df.format(cli.getDataEmpresa())%></td>
 
-				</tr>
-			</c:forEach>
+			</tr>
+			<%
+				}
+			}catch(Exception e){
+		
+			}
+			%>
 		</table>
+	</fieldset>
 
-	</div>
 	<a href="index.jsp">Voltar</a>
 
 

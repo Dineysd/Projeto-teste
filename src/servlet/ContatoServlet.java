@@ -23,24 +23,27 @@ public class ContatoServlet extends HttpServlet {
 
 	
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		Contato cont = new Contato();
+		
 
 		ContatosDao cdao = new ContatosDao();
 		
-		cont.setDDD(Integer.parseInt(request.getParameter("ddd")));
-		cont.setTelefone(request.getParameter("telefone"));
+		Contato cont = new Contato(Integer.parseInt(request.getParameter("ddd")),request.getParameter("telefone"));
+		
+		
 
-			try {
-				cdao.inserir(cont);
-			} catch (SQLException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
+			
+				try {
+					cdao.inserir(cont);
+				} catch (SQLException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+			
 		
 		
 		request.setAttribute("contato", cont);
 
-		RequestDispatcher rd = request.getRequestDispatcher("/endereco.jsp");
+		RequestDispatcher rd = request.getRequestDispatcher("/mensagemEndereco.jsp");
 		rd.forward(request, response);
 	}
 

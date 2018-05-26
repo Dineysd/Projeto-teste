@@ -17,7 +17,6 @@
 				<h1>Cadastro de Endereço!</h1>
 				
 
-
 				<tr>
 					<td>Logradouro:</td>
 					<td><input type="text" name="logradouro" id="logradouro" autofocus="autofocus" value="${endereco.logradouro}" placeholder="Logradouro"></td>
@@ -30,8 +29,12 @@
 				
 				<tr>
 					<td>Bairro:</td>
-					<td><input type="text" name="bairro" id="bairro" autofocus="autofocus" value="${endereco.bairro}" placeholder="numero"></td>
+					<td><input type="text" name="bairro" id="bairro" autofocus="autofocus" value="${endereco.bairro}" placeholder="bairro"></td>
 					
+				</tr>
+				<tr>
+					<td>Cidade:</td>
+					<td><input type="text" name="cidade" id="cidade" autofocus="autofocus"  value="${endereco.cidade}" placeholder="Cidade"></td>
 				</tr>
 
 				<tr>
@@ -41,7 +44,7 @@
 
 				
 				<tr>
-					<td><input type="submit" value="Enviar" name="enviar3" id="enviar3"> <input
+					<td><input type="submit" value="enviar" name="enviar3" id="enviar3"> <input
 						type="reset" value="Limpar"></td>
 				</tr>
 

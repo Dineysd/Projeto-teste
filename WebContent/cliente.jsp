@@ -54,6 +54,39 @@
 					<td><input type="text" name="dataemp" id="dataemp"
 						autofocus="autofocus" placeholder="00/00/0000"></td>
 				</tr>
+				
+				<tr>
+					<td>Telefone (DDD):</td>
+					<td><input type="text" name="ddd" id="ddd" autofocus="autofocus"
+						size="3" placeholder="DDD" value="${cliente.ddd}"> <input
+						size="12" type="text" name="telefone" id="telefone" autofocus="autofocus"
+						placeholder="9999-9999" value="${cliente.telefone}"></td>
+				</tr>
+				
+				<tr>
+					<td>Logradouro:</td>
+					<td><input type="text" name="logradouro" id="logradouro" autofocus="autofocus" value="${cliente.logradouro}" placeholder="Logradouro"></td>
+				</tr>
+
+				<tr>
+					<td>Numero:</td>
+					<td><input type="text" name="numero" id="numero" autofocus="auto focus" value="${cliente.numero}" placeholder="numero"></td>
+				</tr>
+				
+				<tr>
+					<td>Bairro:</td>
+					<td><input type="text" name="bairro" id="bairro" autofocus="autofocus" value="${cliente.bairro}" placeholder="numero"></td>
+					
+				</tr>
+				<tr>
+					<td>Cidade:</td>
+					<td><input type="text" name="cidade" id="cidade" autofocus="autofocus"  value="${cliente.cidade}" placeholder="cidade"></td>
+				</tr>
+
+				<tr>
+					<td>CEP:</td>
+					<td><input type="text" name="cep" id="cep" autofocus="autofocus"  value="${cliente.cep}" placeholder="CEP"></td>
+				</tr>
 
 				<tr>
 					<td><input type="submit" value="enviar" name="enviar"

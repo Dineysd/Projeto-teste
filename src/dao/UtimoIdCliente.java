@@ -14,14 +14,15 @@ public class UtimoIdCliente {
 		Connection con = ConexaoDao.getConnection();
 		
 		PreparedStatement stmt = con
-				.prepareStatement("select max(id) from cliente");
+				.prepareStatement("select max(id) as maximo from cliente");
 		ResultSet rs = stmt.executeQuery();
 		if (rs.next()) {
 			
-			idCliente.setId(Long.parseLong(rs.getString("id")));
+			idCliente.setId(rs.getString("maximo"));
 
 		}
 		stmt.close();
+		
 		return idCliente;
 		
 	}

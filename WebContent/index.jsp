@@ -14,7 +14,7 @@
 	<div align="center">
 		<H1> Sistema de cadastro!</H1>
 		<a href="cliente.jsp">Manter Cliente</a><br> <a
-			href="ClienteServlet?acao=Listar">Listar Clientes</a><br>
+			href="listaClientes">Listar Clientes</a><br>
 			<a
 			href="listarPorDDD.jsp">Listar Por DDD</a><br>
 	</div>

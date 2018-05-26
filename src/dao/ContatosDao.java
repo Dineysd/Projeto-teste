@@ -10,18 +10,20 @@ import entidade.Contato;
 public class ContatosDao {
 
 	Connection con = ConexaoDao.getConnection();
-	private UtimoIdCliente cliente;
+	
 
 	public void inserir(Contato contato) throws SQLException {
 
 		try {
-			String sql = "insert into contato(ddd, telefone, codigo_cli) values(?, ?, ?)";
+			UtimoIdCliente cliente = new UtimoIdCliente();
+			
+			String sql = "insert into contato(id, ddd, telefone, cliente_id) values(?, ?, ?, ?)";
 
 			PreparedStatement preparar = con.prepareStatement(sql);
-
-			preparar.setLong(1, contato.getDDD());
-			preparar.setString(2, contato.getTelefone());
-			preparar.setLong(3, cliente.utimoidCliente().getId());
+            preparar.setString(1, contato.getId());
+			preparar.setLong(2, contato.getDDD());
+			preparar.setString(3, contato.getTelefone());
+			preparar.setString(4, cliente.utimoidCliente().getId());
 
 			preparar.execute();
 			preparar.close();

@@ -1,6 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
-    
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -8,11 +7,10 @@
 <title>Insert title here</title>
 </head>
 <body>
-<H1>Clientes Cadastrados  com sucesso!!</H1>
+<H1>Deseja cadastrar outro Endereço:</H1>
 
-<a href="index.jsp">Voltar</a>	
-
-
+<a href="endereco.jsp">SIM</a>
+<a href="sucesso.jsp">NÃO</a>
 
 </body>
 </html>

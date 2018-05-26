@@ -1,9 +1,11 @@
+<%@page import="entidade.Cliente"%>
+<%@page import="java.util.List"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1"%>
-    <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn"%>
+	pageEncoding="ISO-8859-1"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-    
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -11,31 +13,46 @@
 <title>Lista de Clientes</title>
 </head>
 <body>
+	<form method="post" action="listaClientes">
 
-<div align="center">
-		<P>Lista de Clientes</P>
-		<table border="1">
-			<tr>
-				
-				<td>Nome</td>
-				<td>CPF</td>
-				<td>Data Nascimento</td>
-				
-			</tr>
-			<c:forEach var="cliente" items="${listaCliente}">
+		<fieldset>
+			<legend>
+				<strong>Lista de Clientes</strong>
+			</legend>
+			<table align="center" border="1" width="80%">
 				<tr>
-					
-					<td>${cliente.nome}</td>
-					<td>${cliente.cpf}</td>
-					
-					
-				<td>${cliente.datanascimento}</td>
-					
+
+					<td>Nome</td>
+					<td>CPF</td>
+					<td>Data Nascimento</td>
+					<td>Data Empresa</td>
+
 				</tr>
-			</c:forEach>
-		</table>
-				
-	</div>
+				<%
+					try {
+						List<Cliente> listas = (List<Cliente>) request.getAttribute("listas");
+						java.text.DateFormat df = new java.text.SimpleDateFormat("dd/MM/yyyy");
+
+						for (Cliente cli : listas) {
+				%>
+				<tr>
+
+					<td><%=cli.getNome()%></td>
+					<td><%=cli.getCpf()%></td>
+					<td><%=df.format(cli.getDataNascimento())%></td>
+					<td><%=df.format(cli.getDataEmpresa())%></td>
+
+				</tr>
+				<%
+					}
+					} catch (Exception e) {
+						
+					}
+				%>
+			</table>
+		</fieldset>
+
+	</form>
 	<a href="index.jsp">Voltar</a>
 
 </body>

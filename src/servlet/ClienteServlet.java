@@ -1,6 +1,7 @@
 package servlet;
 
 import java.io.IOException;
+import java.sql.Connection;
 import java.sql.Date;
 import java.sql.SQLException;
 import java.text.DateFormat;
@@ -14,6 +15,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import connection.ConexaoDao;
 import dao.ClienteDao;
 import dao.ContatosDao;
 import entidade.Cliente;
@@ -32,48 +34,49 @@ public class ClienteServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 
-		String destino = "sucesso.jsp";
-		String mensagem = "";
+		Connection conexao = ConexaoDao.getConnection();
 
+		Contato cont = new Contato();
 		Cliente cli = new Cliente();
 
-		ClienteDao dao = new ClienteDao();
-		
-		Contato cont = new Contato();
-		
-		cont.setDDD(Integer.parseInt(request.getParameter("ddd")));
-		cont.setTelefone(request.getParameter("telefone"));
-		
-		
+		// ----CONTATO
+		Integer ddd = Integer.parseInt(request.getParameter("ddd"));
+		String fone = request.getParameter("telefone");
 
-		cli.setNome(request.getParameter("nome"));
-		cli.setCpf(request.getParameter("cpf"));
-		cli.addContato(cont);
+		// ----ENDEREÇO
+		String loga = request.getParameter("logradouro");
+		Integer numero = Integer.parseInt(request.getParameter("numero"));
+		String bairro = request.getParameter("bairro");
+		String cidade = request.getParameter("cidade");
+		String cep = request.getParameter("cep");
+
+		// ----CLIENTE
+		String nome = request.getParameter("nome");
+		String cpfCnpj = request.getParameter("cpf");
+		DateFormat df = new SimpleDateFormat("dd/MM/yyyy");
+		DateFormat df3 = new SimpleDateFormat("dd/MM/yyyy");
+		cli.adicionarContatos(ddd, fone);
+		cli.setEnderecos(loga, numero, bairro, cidade, cep);
 
 		try {
-			DateFormat df = new SimpleDateFormat("dd/MM/yyyy");
-			DateFormat df3 = new SimpleDateFormat("dd/MM/yyyy");
-			cli.setDataNascimento(df.parse(request.getParameter("datanascimento")));
-			cli.setDataEmpresa(df3.parse(request.getParameter("dataemp")));
+			ClienteDao dao = new ClienteDao(conexao);
 
+			Cliente clientes = new Cliente(nome, cpfCnpj, df.parse(request.getParameter("datanascimento")),
+					df3.parse(request.getParameter("dataemp")), cli.getEnderecos(), cli.getContatos());
+
+			dao.save(clientes);
+
+			request.setAttribute("cliente", clientes);
 		} catch (ParseException e) {
 			e.printStackTrace();
+		} catch (SQLException e) {
+			
+			e.printStackTrace();
 		}
+		
 
-		dao.inserir(cli);
 
-		request.setAttribute("cliente", cli);
-
-		if (mensagem.length() == 0) {
-			mensagem = "Cliente Cadastrado com sucesso!";
-		} else {
-
-			destino = "erro.jsp";
-		}
-
-		request.setAttribute("mensagem", mensagem);
-
-		RequestDispatcher rd = request.getRequestDispatcher("/contatos.jsp");
+		RequestDispatcher rd = request.getRequestDispatcher("/mensagem.jsp");
 		rd.forward(request, response);
 	}
 

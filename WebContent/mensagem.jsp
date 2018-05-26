@@ -7,10 +7,11 @@
 <title>Insert title here</title>
 </head>
 <body>
+<H1>Deseja cadastrar outro Contato:</H1>
 
-Verifique o erro: ${mensagem}
 
-<a href="index.jsp">Voltar</a>
+<a href="contatos.jsp">SIM</a>
+<a href="mensagemEndereco.jsp">NÃO</a>
 
 </body>
 </html>

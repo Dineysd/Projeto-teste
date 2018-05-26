@@ -116,7 +116,7 @@ function validarForm() {
 
 		}
 	}
-	
+
 	if (!validarPreenchimento("dataemp")) {
 		mensagem += "preencha o campo da Data da Empresa \n ";
 		contErro += 1;
@@ -126,10 +126,43 @@ function validarForm() {
 
 			mensagem += " Empresa com mais de 3 anos \n ";
 			contErro += 1;
-
 		}
 	}
 
+	if (!validarPreenchimento("ddd")) {
+		mensagem += "Preencha o campo do DDD  \n ";
+		contErro++;
+	}
+
+	if (!validarPreenchimento("telefone")) {
+		mensagem += "Preencha o campo do telefone  \n ";
+		contErro++;
+	}
+
+	if (!validarPreenchimento("logradouro")) {
+		mensagem += "Preencha o campo do Logradouro  \n ";
+		contErro += 1;
+	}
+
+	if (!validarPreenchimento("numero")) {
+		mensagem += "Preencha o campo do numero  \n ";
+		contErro += 1;
+	}
+
+	if (!validarPreenchimento("bairro")) {
+		mensagem += "Preencha o campo do Bairro  \n ";
+		contErro += 1;
+	}
+
+	if (!validarPreenchimento("cidade")) {
+		mensagem += "Preencha o campo da cidade  \n ";
+		contErro += 1;
+	}
+
+	if (!validarPreenchimento("cep")) {
+		mensagem += "Preencha o campo do CEP  \n ";
+		contErro += 1;
+	}
 
 	// se a mensagem for diferente de vazio mostrar alerta senão enviar o
 	// formulário

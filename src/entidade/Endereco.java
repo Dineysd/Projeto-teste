@@ -1,50 +1,33 @@
 package entidade;
 
-import java.util.ArrayList;
-import java.util.List;
 import java.util.UUID;
 
 public class Endereco {
 	
-	private Integer id;
+	private String id;
 	private String logradouro;
-	private String numero;
+	private int numero;
 	private String bairro;
+	private String cidade;
 	private String cep;
 	private Cliente cliente;
-	
-
-	public void setLogradouro(String logradouro) {
-		this.logradouro = logradouro;
-	}
-
-
-	public void setNumero(String numero) {
-		this.numero = numero;
-	}
-
-
-	public void setBairro(String bairro) {
-		this.bairro = bairro;
-	}
-
-
-	public void setCep(String cep) {
-		this.cep = cep;
-	}
-
-
-	public void setCliente(Cliente cliente) {
-		this.cliente = cliente;
-	}
 
 
 	public Endereco() {
 
+		this.id = UUID.randomUUID().toString();
+	}
+	public Endereco(String logradouro, int numero, String bairro,String cidade, String cep) {
+		this();
+		this.logradouro = logradouro;
+		this.numero = numero;
+		this.bairro = bairro;
+		this.cidade = cidade;
+		this.cep = cep;
 	}
 
 
-	public Integer getId() {
+	public String getId() {
 		return id;
 	}
 
@@ -54,13 +37,17 @@ public class Endereco {
 	}
 
 
-	public String getNumero() {
+	public int getNumero() {
 		return numero;
 	}
 
 
 	public String getBairro() {
 		return bairro;
+	}
+	
+	public String getCidade() {
+		return cidade;
 	}
 
 

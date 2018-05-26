@@ -4,7 +4,7 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 
 public class ConexaoDao {
-	private static String banco = "jdbc:postgresql://localhost:5432/projeto2?autoReconnect=true";
+	private static String banco = "jdbc:postgresql://localhost:5432/projeto01?autoReconnect=true";
 	private static String password = "admin";
 	private static String user = "postgres";
 	private static Connection connection = null;
