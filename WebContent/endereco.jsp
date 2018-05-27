@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<script type="text/javascript" src="js/javascript/validarEndereco.js"></script>
+<script type="text/javascript" src="js/javascript/validarEnd.js"></script>
 
 <title>Insert title here</title>
 </head>
